@@ -9,259 +9,178 @@
 <style>
   body {
     margin: 0;
-    background: radial-gradient(circle at top, #0c0c0c, #050505 60%, #000);
+    background: radial-gradient(circle at top, #0c0c0c, #050505);
     color: #e8e6e3;
     font-family: "Playfair Display", serif;
-    overflow-x: hidden;
-  }
-
-  /* cinematic gold glow */
-  body::before {
-    content: "";
-    position: fixed;
-    top: -200px;
-    left: -200px;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(201,169,110,0.18), transparent 60%);
-    filter: blur(80px);
-    animation: floatGlow 12s infinite alternate ease-in-out;
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    bottom: -200px;
-    right: -200px;
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 65%);
-    filter: blur(90px);
-    animation: floatGlow2 14s infinite alternate ease-in-out;
-  }
-
-  @keyframes floatGlow {
-    from { transform: translate(0,0); }
-    to { transform: translate(80px,50px); }
-  }
-
-  @keyframes floatGlow2 {
-    from { transform: translate(0,0); }
-    to { transform: translate(-80px,-40px); }
-  }
-
-  /* cocktail silhouette overlay */
-  .glass-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.06;
-    background:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M100 10 L120 60 L80 60 Z' stroke='white' fill='none'/%3E%3Cpath d='M100 60 L100 140' stroke='white'/%3E%3Cpath d='M70 140 L130 140' stroke='white'/%3E%3C/svg%3E");
-    background-size: 220px;
-    filter: blur(0.5px);
-  }
-
-  header {
-    text-align: center;
-    padding: 100px 20px 60px;
   }
 
   h1 {
     font-family: "Cinzel", serif;
-    font-size: 72px;
-    letter-spacing: 14px;
-    margin: 0;
+    text-align: center;
+    letter-spacing: 10px;
+    margin-top: 60px;
     color: transparent;
-    -webkit-text-stroke: 1.5px #c9a96e;
-    text-shadow:
-      0 0 20px rgba(201,169,110,0.25),
-      0 0 40px rgba(201,169,110,0.08);
+    -webkit-text-stroke: 1px #c9a96e;
   }
 
-  .subtitle {
-    margin-top: 14px;
-    color: #c9a96e;
-    letter-spacing: 4px;
-    font-size: 13px;
-    opacity: 0.9;
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 40px 10px;
+    flex-wrap: wrap;
   }
 
-  .section {
-    max-width: 900px;
-    margin: 90px auto;
-    padding: 28px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,169,110,0.15);
-    border-radius: 14px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-
-    opacity: 0;
-    transform: translateY(25px);
-    animation: rise 1s ease forwards;
-  }
-
-  .section:nth-of-type(2) { animation-delay: 0.2s; }
-  .section:nth-of-type(3) { animation-delay: 0.4s; }
-  .section:nth-of-type(4) { animation-delay: 0.6s; }
-  .section:nth-of-type(5) { animation-delay: 0.8s; }
-
-  h2 {
-    font-family: "Cinzel", serif;
-    color: #c9a96e;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  p {
-    line-height: 1.8;
-    color: #d8d6d2;
-  }
-
-  .highlight {
-    color: #c9a96e;
-    font-style: italic;
-  }
-
-  button {
-    margin-top: 18px;
-    padding: 12px 26px;
+  .tab-btn {
+    padding: 10px 16px;
     border: 1px solid #c9a96e;
     background: transparent;
     color: #c9a96e;
-    letter-spacing: 1px;
     cursor: pointer;
     transition: 0.3s;
+    letter-spacing: 1px;
   }
 
-  button:hover {
+  .tab-btn:hover {
     background: #c9a96e;
     color: black;
-    transform: scale(1.03);
   }
 
-  .hidden {
+  .tab-btn.active {
+    background: #c9a96e;
+    color: black;
+  }
+
+  .tab {
     display: none;
-    margin-top: 20px;
-    color: #c9a96e;
-  }
-
-  form input, form textarea {
-    width: 100%;
-    margin-top: 14px;
-    padding: 12px;
-    background: rgba(0,0,0,0.3);
+    max-width: 850px;
+    margin: 0 auto 80px;
+    padding: 25px;
     border: 1px solid rgba(201,169,110,0.2);
-    color: white;
-    border-radius: 6px;
-    outline: none;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
   }
 
-  textarea {
-    height: 110px;
-    resize: none;
+  .tab.active {
+    display: block;
   }
 
-  .submit-btn {
+  input, textarea {
     width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid #333;
+    color: white;
   }
 
-  .confirmation {
-    display: none;
-    margin-top: 18px;
+  button.submit {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c9a96e;
+    background: transparent;
     color: #c9a96e;
+    cursor: pointer;
   }
 
-  footer {
-    text-align: center;
-    padding: 50px;
-    border-top: 1px solid #1c1c1c;
-    color: #777;
-    font-size: 12px;
-    letter-spacing: 2px;
+  button.submit:hover {
+    background: #c9a96e;
+    color: black;
   }
 
-  @keyframes rise {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .note {
+    color: #c9a96e;
+    margin-top: 10px;
   }
 </style>
 </head>
 
 <body>
 
-<div class="glass-bg"></div>
+<h1>DEZ N BITEZ</h1>
 
-<header>
-  <h1>DEZ N BITEZ</h1>
-  <div class="subtitle">A BAZAAR BY NAME. A PRIVATE STANDARD.</div>
-</header>
-
-<div class="section">
-  <h2>The Experience</h2>
-  <p>
-    Listed as a bazaar, but understood only by those who seek more than what is visible.
-    Dez N Bitez is not discovered by chance.
-  </p>
-  <p class="highlight">
-    Open Tuesdays only. Twenty-four hours of uninterrupted service.
-  </p>
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('login')">Login</button>
+  <button class="tab-btn" onclick="openTab('valdez')">Valdez</button>
+  <button class="tab-btn" onclick="openTab('food')">The Food</button>
+  <button class="tab-btn" onclick="openTab('secret')">Access</button>
 </div>
 
-<div class="section">
+<!-- LOGIN -->
+<div id="login" class="tab active">
+  <h2>Private Entry</h2>
+  <p>Access is restricted.</p>
+
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+
+  <button class="submit" onclick="fakeLogin()">Enter</button>
+
+  <p id="loginMsg" class="note"></p>
+</div>
+
+<!-- VALDEZ -->
+<div id="valdez" class="tab">
   <h2>Valdez</h2>
   <p>
-    Before the name became known, there was Valdez.
-    A craftsman defined not by publicity, but by discipline.
+    Valdez is not a public figure. He is a method.
+    A craftsman who believes food should not be rushed, advertised, or simplified.
+  </p>
+
+  <p>
+    His desires are not wealth or recognition, but control over perfection.
+    Every dish is built like architecture, removed from noise, stripped to intent.
   </p>
 </div>
 
-<div class="section">
-  <h2>Entry</h2>
-  <p>Access is not advertised. It is understood.</p>
+<!-- FOOD -->
+<div id="food" class="tab">
+  <h2>The Food</h2>
+  <p>
+    The menu is not published. It evolves weekly.
+  </p>
 
-  <button onclick="showCode()">Reveal Entry Method</button>
+  <p>
+    Expect layered flavors, restrained sweetness, slow heat, and precise plating.
+    Nothing is accidental. Nothing is repeated without reason.
+  </p>
+</div>
 
-  <div id="code" class="hidden">
+<!-- SECRET -->
+<div id="secret" class="tab">
+  <h2>Access Method</h2>
+
+  <p><strong>Address:</strong> 331 Annaberg Lane</p>
+
+  <p>
+    Entry is not announced. It is recognized.
+  </p>
+
+  <p class="note">
     Knock three times.<br>
     Wait three seconds.<br>
-    Knock once.
-  </div>
+    Knock once.<br><br>
+    Do not repeat the sequence twice.
+  </p>
 </div>
-
-<div class="section">
-  <h2>Reservation Request</h2>
-  <p>Submissions are reviewed privately.</p>
-
-  <form onsubmit="fakeSubmit(event)">
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email Address" required>
-    <input type="text" placeholder="Requested Tuesday Time" required>
-    <textarea placeholder="Notes (optional)"></textarea>
-    <button class="submit-btn">Submit</button>
-  </form>
-
-  <div id="confirmation" class="confirmation">
-    Request received. If selected, contact will be made discreetly.
-  </div>
-</div>
-
-<footer>
-  TUESDAYS ONLY | 24 HOURS | DEZ N BITEZ
-</footer>
 
 <script>
-  function showCode() {
-    document.getElementById("code").style.display = "block";
-  }
+function openTab(id) {
+  const tabs = document.querySelectorAll(".tab");
+  const buttons = document.querySelectorAll(".tab-btn");
 
-  function fakeSubmit(e) {
-    e.preventDefault();
-    document.getElementById("confirmation").style.display = "block";
-  }
+  tabs.forEach(t => t.classList.remove("active"));
+  buttons.forEach(b => b.classList.remove("active"));
+
+  document.getElementById(id).classList.add("active");
+  event.target.classList.add("active");
+}
+
+function fakeLogin() {
+  document.getElementById("loginMsg").textContent =
+    "Access denied. Invitation required.";
+}
 </script>
 
 </body>
