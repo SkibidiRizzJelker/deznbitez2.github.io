@@ -12,33 +12,9 @@ body {
   background: #070707;
   color: #e8e6e3;
   font-family: "Playfair Display", serif;
-  overflow-x: hidden;
 }
 
-/* glow */
-body::before {
-  content: "";
-  position: fixed;
-  top: -200px;
-  left: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(191,164,111,0.15), transparent 60%);
-  filter: blur(60px);
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  bottom: -200px;
-  right: -200px;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 60%);
-  filter: blur(80px);
-}
-
-/* MENU BOOKMARK */
+/* bookmark */
 .menu-bookmark {
   position: fixed;
   top: 20px;
@@ -47,25 +23,24 @@ body::after {
   color: black;
   padding: 12px 18px;
   font-family: "Cinzel", serif;
-  letter-spacing: 2px;
   cursor: pointer;
   z-index: 1000;
-  border-radius: 0 6px 6px 0;
 }
 
-/* MENU PANEL */
+/* panel */
 .menu-panel {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 90%;
-  max-width: 420px;
+  width: 95%;
+  max-width: 800px;
   height: 100%;
-  background: #0a0a0a;
-  border-right: 1px solid #c9a96e;
+  background: #f4f1ea;
+  color: #222;
   transition: 0.5s;
   z-index: 999;
   overflow-y: auto;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
 }
 
 .menu-panel.open {
@@ -73,68 +48,59 @@ body::after {
 }
 
 .menu-content {
-  padding: 30px;
+  padding: 40px;
+  font-family: serif;
 }
 
-.menu-content h2,
-.menu-content h3 {
-  color: #c9a96e;
-  font-family: "Cinzel", serif;
+.menu-title {
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 32px;
+  color: #b85c5c;
+  margin-bottom: 30px;
 }
 
-.menu-content p {
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+h3 {
+  margin-top: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 13px;
+  line-height: 1.4;
   margin: 6px 0;
-  font-size: 14px;
 }
 
 /* main site */
 header {
   text-align: center;
-  padding: 90px 20px 60px;
+  padding: 90px 20px;
 }
 
 h1 {
   font-family: "Cinzel", serif;
   font-size: 64px;
-  letter-spacing: 10px;
-  margin: 0;
   color: transparent;
   -webkit-text-stroke: 1px #c9a96e;
 }
 
-.section {
-  max-width: 850px;
-  margin: 90px auto;
-  padding: 0 24px;
-}
-
-button {
-  margin-top: 20px;
-  padding: 12px 26px;
-  border: 1px solid #c9a96e;
-  background: transparent;
-  color: #c9a96e;
-  cursor: pointer;
-}
-
-.hidden { display: none; }
-
-footer {
-  text-align: center;
-  padding: 50px;
-  color: #777;
-}
-
-/* EASTER EGG */
+/* sully */
 .egg {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.95);
+  background: black;
+  color: #c9a96e;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #c9a96e;
   z-index: 2000;
 }
 </style>
@@ -142,29 +108,82 @@ footer {
 
 <body>
 
-<!-- MENU TAB -->
 <div class="menu-bookmark" onclick="toggleMenu()">MENU</div>
 
-<!-- MENU PANEL -->
 <div id="menuPanel" class="menu-panel">
   <div class="menu-content">
-    <h2>DEZ N BITEZ</h2>
 
-    <h3>For the Table</h3>
-    <p>Fromage or Charcuterie</p>
-    <p>Gulf Oysters</p>
-    <p>Shrimp Cocktail</p>
+    <div class="menu-title">FOUNTAIN LOUNGE</div>
 
-    <h3>Dez’s Famous Bitez</h3>
-    <p><strong>First Course</strong><br>street starters / hidden selection</p>
-    <p><strong>Second Course</strong><br>signature bitez + heat</p>
-    <p><strong>Third Course</strong><br>dessert</p>
+    <div class="columns">
 
-    <h3>Main</h3>
-    <p>NY Strip</p>
-    <p>Gulf Shrimp</p>
-    <p>Burger</p>
-    <p><strong>Bitez</strong></p>
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <h3>For the Table</h3>
+        <p><strong>Fromage or Charcuterie 25 | 45</strong><br>
+        selection of meats & cheeses, baguette</p>
+
+        <p><strong>Louisiana Style Charbroiled Gulf Oysters</strong><br>
+        garlic butter, parmesan, herb panko</p>
+
+        <p><strong>Jumbo Shrimp Cocktail</strong><br>
+        citrus poached shrimp, remoulade</p>
+
+        <p><strong>Bread Service</strong><br>
+        house breads, specialty butters</p>
+
+        <h3>First Course</h3>
+
+        <p><strong>Pan Seared Foie Gras 38</strong><br>
+        cake, serrano ham, pineapple gastrique</p>
+
+        <p><strong>Moules Frites 24</strong><br>
+        mussels, fries, herbs</p>
+
+        <p><strong>Steak Tartare 25</strong><br>
+        filet, garlic dijon, quail egg</p>
+
+        <p><strong>Blue Crab Beignets 27</strong><br>
+        local crab, truffle aioli</p>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+
+        <h3>Dez’s Famous Bitez 45</h3>
+
+        <p><strong>First Course</strong><br>
+        underground starters, chef’s coded selection, or house secrets</p>
+
+        <p><strong>Second Course</strong><br>
+        Dez’s signature bitez, layered heat, mac & cheese</p>
+
+        <p><strong>Third Course</strong><br>
+        desserts</p>
+
+        <h3>Main Course</h3>
+
+        <p><strong>NY Strip 69</strong><br>
+        steak, potatoes, wine sauce</p>
+
+        <p><strong>Gulf Redfish Amandine 46</strong><br>
+        almonds, citrus butter</p>
+
+        <p><strong>Gulf Shrimp 42</strong><br>
+        garlic shrimp, corn coulis</p>
+
+        <p><strong>Fountain Lounge Burger 26</strong><br>
+        bacon, cheddar, fries</p>
+
+        <p><strong>Bitez</strong><br>
+        wild flavor risotto, truffle finish</p>
+
+      </div>
+
+    </div>
+
   </div>
 </div>
 
@@ -172,22 +191,7 @@ footer {
   <h1>DEZ N BITEZ</h1>
 </header>
 
-<div class="section">
-  <h2>Entry</h2>
-  <button onclick="showCode()">Reveal Entry Method</button>
-  <div id="code" class="hidden">
-    Knock three times.<br>
-    Wait three seconds.<br>
-    Knock once.
-  </div>
-</div>
-
-<footer>
-  Tuesdays Only | 24 Hours
-</footer>
-
-<!-- SULLY -->
-<div id="egg" class="egg">
+<div class="egg" id="egg">
   <h2>James P. Sullivan</h2>
   <button onclick="closeEgg()">Close</button>
 </div>
@@ -197,11 +201,6 @@ function toggleMenu() {
   document.getElementById("menuPanel").classList.toggle("open");
 }
 
-function showCode() {
-  document.getElementById("code").style.display = "block";
-}
-
-/* sully trigger */
 let buffer = "";
 document.addEventListener("keydown", (e) => {
   buffer += e.key.toLowerCase();
