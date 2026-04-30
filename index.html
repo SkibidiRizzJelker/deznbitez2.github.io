@@ -60,12 +60,13 @@ body::after {
   width: 95%;
   max-width: 850px;
   height: 100%;
-  background: #f4f1ea;
-  color: #222;
+  background: #000;
+  color: #c9a96e;
   transition: 0.5s;
   z-index: 999;
   overflow-y: auto;
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  border-right: 1px solid #c9a96e;
 }
 
 .menu-panel.open {
@@ -74,15 +75,17 @@ body::after {
 
 .menu-content {
   padding: 40px;
-  font-family: serif;
 }
 
 .menu-title {
   text-align: center;
-  letter-spacing: 6px;
-  font-size: 34px;
-  color: #b85c5c;
+  letter-spacing: 8px;
+  font-size: 36px;
+  color: #c9a96e;
+  font-family: "Cinzel", serif;
   margin-bottom: 30px;
+  border-bottom: 1px solid #c9a96e;
+  padding-bottom: 10px;
 }
 
 .columns {
@@ -95,6 +98,8 @@ body::after {
   margin-top: 20px;
   font-size: 14px;
   text-transform: uppercase;
+  border-bottom: 1px solid #c9a96e;
+  padding-bottom: 5px;
 }
 
 .menu-content p {
@@ -116,29 +121,6 @@ h1 {
   margin: 0;
   color: transparent;
   -webkit-text-stroke: 1px #c9a96e;
-}
-
-.section {
-  max-width: 850px;
-  margin: 90px auto;
-  padding: 0 24px;
-}
-
-button {
-  margin-top: 20px;
-  padding: 12px 26px;
-  border: 1px solid #c9a96e;
-  background: transparent;
-  color: #c9a96e;
-  cursor: pointer;
-}
-
-.hidden { display: none; }
-
-footer {
-  text-align: center;
-  padding: 50px;
-  color: #777;
 }
 
 /* sully */
@@ -163,17 +145,16 @@ footer {
 <div id="menuPanel" class="menu-panel">
   <div class="menu-content">
 
-    <div class="menu-title">FOUNTAIN LOUNGE</div>
+    <!-- UPDATED TITLE -->
+    <div class="menu-title">DEZ N BITEZ</div>
 
     <div class="columns">
 
-      <!-- LEFT -->
       <div>
-
         <h3>For the Table</h3>
-        <p><strong>Fromage or Charcuterie 25 | 45</strong><br>meats, cheeses, baguette</p>
-        <p><strong>Louisiana Charbroiled Oysters</strong><br>garlic butter, parmesan</p>
-        <p><strong>Jumbo Shrimp Cocktail</strong><br>remoulade</p>
+        <p><strong>Fromage or Charcuterie 25 | 45</strong></p>
+        <p><strong>Louisiana Charbroiled Oysters</strong></p>
+        <p><strong>Jumbo Shrimp Cocktail</strong></p>
         <p><strong>Bread Service</strong></p>
 
         <h3>First Course</h3>
@@ -181,12 +162,9 @@ footer {
         <p><strong>Moules Frites 24</strong></p>
         <p><strong>Steak Tartare 25</strong></p>
         <p><strong>Blue Crab Beignets 27</strong></p>
-
       </div>
 
-      <!-- RIGHT -->
       <div>
-
         <h3>Dez’s Famous Bitez 45</h3>
         <p><strong>First Course</strong><br>hidden starters, coded selections</p>
         <p><strong>Second Course</strong><br>signature bitez + heat</p>
@@ -198,7 +176,6 @@ footer {
         <p><strong>Gulf Shrimp 42</strong></p>
         <p><strong>Burger 26</strong></p>
         <p><strong>Bitez</strong></p>
-
       </div>
 
     </div>
@@ -210,20 +187,6 @@ footer {
   <h1>DEZ N BITEZ</h1>
 </header>
 
-<div class="section">
-  <h2>Entry</h2>
-  <button onclick="showCode()">Reveal Entry Method</button>
-  <div id="code" class="hidden">
-    Knock three times.<br>
-    Wait three seconds.<br>
-    Knock once.
-  </div>
-</div>
-
-<footer>
-  Tuesdays Only | 24 Hours | Dez N Bitez
-</footer>
-
 <div id="egg" class="egg">
   <h2>James P. Sullivan</h2>
   <button onclick="closeEgg()">Close</button>
@@ -232,10 +195,6 @@ footer {
 <script>
 function toggleMenu() {
   document.getElementById("menuPanel").classList.toggle("open");
-}
-
-function showCode() {
-  document.getElementById("code").style.display = "block";
 }
 
 let buffer = "";
