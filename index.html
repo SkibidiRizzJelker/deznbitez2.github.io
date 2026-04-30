@@ -12,9 +12,33 @@ body {
   background: #070707;
   color: #e8e6e3;
   font-family: "Playfair Display", serif;
+  overflow-x: hidden;
 }
 
-/* bookmark */
+/* glow */
+body::before {
+  content: "";
+  position: fixed;
+  top: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(191,164,111,0.15), transparent 60%);
+  filter: blur(60px);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -200px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 60%);
+  filter: blur(80px);
+}
+
+/* MENU TAB */
 .menu-bookmark {
   position: fixed;
   top: 20px;
@@ -25,15 +49,16 @@ body {
   font-family: "Cinzel", serif;
   cursor: pointer;
   z-index: 1000;
+  border-radius: 0 6px 6px 0;
 }
 
-/* panel */
+/* MENU PANEL */
 .menu-panel {
   position: fixed;
   top: 0;
   left: -100%;
   width: 95%;
-  max-width: 800px;
+  max-width: 850px;
   height: 100%;
   background: #f4f1ea;
   color: #222;
@@ -55,7 +80,7 @@ body {
 .menu-title {
   text-align: center;
   letter-spacing: 6px;
-  font-size: 32px;
+  font-size: 34px;
   color: #b85c5c;
   margin-bottom: 30px;
 }
@@ -63,32 +88,57 @@ body {
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 40px;
 }
 
-h3 {
+.menu-content h3 {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
 }
 
-p {
+.menu-content p {
   font-size: 13px;
-  line-height: 1.4;
   margin: 6px 0;
+  line-height: 1.4;
 }
 
 /* main site */
 header {
   text-align: center;
-  padding: 90px 20px;
+  padding: 90px 20px 60px;
 }
 
 h1 {
   font-family: "Cinzel", serif;
   font-size: 64px;
+  letter-spacing: 10px;
+  margin: 0;
   color: transparent;
   -webkit-text-stroke: 1px #c9a96e;
+}
+
+.section {
+  max-width: 850px;
+  margin: 90px auto;
+  padding: 0 24px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 26px;
+  border: 1px solid #c9a96e;
+  background: transparent;
+  color: #c9a96e;
+  cursor: pointer;
+}
+
+.hidden { display: none; }
+
+footer {
+  text-align: center;
+  padding: 50px;
+  color: #777;
 }
 
 /* sully */
@@ -117,68 +167,37 @@ h1 {
 
     <div class="columns">
 
-      <!-- LEFT COLUMN -->
+      <!-- LEFT -->
       <div>
 
         <h3>For the Table</h3>
-        <p><strong>Fromage or Charcuterie 25 | 45</strong><br>
-        selection of meats & cheeses, baguette</p>
-
-        <p><strong>Louisiana Style Charbroiled Gulf Oysters</strong><br>
-        garlic butter, parmesan, herb panko</p>
-
-        <p><strong>Jumbo Shrimp Cocktail</strong><br>
-        citrus poached shrimp, remoulade</p>
-
-        <p><strong>Bread Service</strong><br>
-        house breads, specialty butters</p>
+        <p><strong>Fromage or Charcuterie 25 | 45</strong><br>meats, cheeses, baguette</p>
+        <p><strong>Louisiana Charbroiled Oysters</strong><br>garlic butter, parmesan</p>
+        <p><strong>Jumbo Shrimp Cocktail</strong><br>remoulade</p>
+        <p><strong>Bread Service</strong></p>
 
         <h3>First Course</h3>
-
-        <p><strong>Pan Seared Foie Gras 38</strong><br>
-        cake, serrano ham, pineapple gastrique</p>
-
-        <p><strong>Moules Frites 24</strong><br>
-        mussels, fries, herbs</p>
-
-        <p><strong>Steak Tartare 25</strong><br>
-        filet, garlic dijon, quail egg</p>
-
-        <p><strong>Blue Crab Beignets 27</strong><br>
-        local crab, truffle aioli</p>
+        <p><strong>Pan Seared Foie Gras 38</strong></p>
+        <p><strong>Moules Frites 24</strong></p>
+        <p><strong>Steak Tartare 25</strong></p>
+        <p><strong>Blue Crab Beignets 27</strong></p>
 
       </div>
 
-      <!-- RIGHT COLUMN -->
+      <!-- RIGHT -->
       <div>
 
         <h3>Dez’s Famous Bitez 45</h3>
-
-        <p><strong>First Course</strong><br>
-        underground starters, chef’s coded selection, or house secrets</p>
-
-        <p><strong>Second Course</strong><br>
-        Dez’s signature bitez, layered heat, mac & cheese</p>
-
-        <p><strong>Third Course</strong><br>
-        desserts</p>
+        <p><strong>First Course</strong><br>hidden starters, coded selections</p>
+        <p><strong>Second Course</strong><br>signature bitez + heat</p>
+        <p><strong>Third Course</strong><br>desserts</p>
 
         <h3>Main Course</h3>
-
-        <p><strong>NY Strip 69</strong><br>
-        steak, potatoes, wine sauce</p>
-
-        <p><strong>Gulf Redfish Amandine 46</strong><br>
-        almonds, citrus butter</p>
-
-        <p><strong>Gulf Shrimp 42</strong><br>
-        garlic shrimp, corn coulis</p>
-
-        <p><strong>Fountain Lounge Burger 26</strong><br>
-        bacon, cheddar, fries</p>
-
-        <p><strong>Bitez</strong><br>
-        wild flavor risotto, truffle finish</p>
+        <p><strong>NY Strip 69</strong></p>
+        <p><strong>Gulf Redfish 46</strong></p>
+        <p><strong>Gulf Shrimp 42</strong></p>
+        <p><strong>Burger 26</strong></p>
+        <p><strong>Bitez</strong></p>
 
       </div>
 
@@ -191,7 +210,21 @@ h1 {
   <h1>DEZ N BITEZ</h1>
 </header>
 
-<div class="egg" id="egg">
+<div class="section">
+  <h2>Entry</h2>
+  <button onclick="showCode()">Reveal Entry Method</button>
+  <div id="code" class="hidden">
+    Knock three times.<br>
+    Wait three seconds.<br>
+    Knock once.
+  </div>
+</div>
+
+<footer>
+  Tuesdays Only | 24 Hours | Dez N Bitez
+</footer>
+
+<div id="egg" class="egg">
   <h2>James P. Sullivan</h2>
   <button onclick="closeEgg()">Close</button>
 </div>
@@ -199,6 +232,10 @@ h1 {
 <script>
 function toggleMenu() {
   document.getElementById("menuPanel").classList.toggle("open");
+}
+
+function showCode() {
+  document.getElementById("code").style.display = "block";
 }
 
 let buffer = "";
